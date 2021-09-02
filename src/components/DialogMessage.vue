@@ -18,6 +18,16 @@
                 <v-container>
                     <span>{{ dialogText }}</span>
                 </v-container>
+                <v-card-actions v-if="displayAction">
+                    <v-btn
+                        color="#43B581"
+                        text
+                        elevation="2"
+                        @click="goToNextRound(false)"
+                    >
+                        {{actionLabel}}
+                    </v-btn>
+                </v-card-actions>
             </v-card-text>
         </v-card>
     </v-dialog>
@@ -25,7 +35,13 @@
 
 <script>
 export default {
-    props: ['dialogMessage', 'dialogTitle', 'dialogText'],
+    props: ['dialogMessage', 'dialogTitle', 'dialogText', 'displayAction', 'actionLabel', 'onClick'],
+    methods: {
+        goToNextRound(isPlayAgain = false) {
+            // Replace the streetview with the next one
+            this.$emit('goToNextRound', isPlayAgain);
+        },
+    },
 };
 </script>
 

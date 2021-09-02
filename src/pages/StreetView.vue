@@ -55,6 +55,9 @@
             :dialog-message="dialogMessage"
             :dialog-title="dialogTitle"
             :dialog-text="dialogText"
+            :display-action="hasDialogAction"
+            :action-label="dialogActionLabel"
+            @goToNextRound="goToNextRound"
         />
         <div class="alert-container">
             <v-alert
@@ -213,6 +216,8 @@ export default {
             dialogMessage: this.multiplayer,
             dialogTitle: this.$t('StreetView.waitForOtherPlayers'),
             dialogText: '',
+            hasDialogAction: this.playerNumber == 1,
+            dialogActionLabel: this.$t('StreetView.ForceNextRound'),
             cptNotFoundLocation: 0,
             isVisibleDialog: false,
             panorama: null,
